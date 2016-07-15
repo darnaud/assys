@@ -37,6 +37,8 @@ INSTALLED_APPS = (
     'django.contrib.sessions',
     'django.contrib.messages',
     'django.contrib.staticfiles',
+    'social.apps.django_app.default',
+    'registration',
     'store',
 )
 
@@ -71,7 +73,11 @@ TEMPLATES = [
 
 WSGI_APPLICATION = 'assybeauty.wsgi.application'
 
-
+# AUTHENTICATION BACKENDS
+AUTHENTICATION_BACKENDS = (
+    'social.backends.facebook.FacebookOAuth2',
+    'django.contrib.auth.backends.ModelBackend'
+    )
 # Database
 # https://docs.djangoproject.com/en/1.8/ref/settings/#databases
 
@@ -101,3 +107,30 @@ USE_TZ = True
 # https://docs.djangoproject.com/en/1.8/howto/static-files/
 
 STATIC_URL = '/static/'
+
+# Registration
+ACCOUNT_ACTIVATION_DAYS = 7
+REGISTRATION_AUTO_LOGIN = True
+LOGIN_REDIRECT_URL = "/store/" 
+
+# Email Settings
+EMAIL_BACKEND = "django.core.mail.backends.smtp.EmailBackend"
+EMAIL_HOST = "smtp.gmail.com"
+EMAIL_HOST_USER = "dominicstern19@gmail.com"
+EMAIL_HOST_PASSWORD = "Dumbsecret1"
+EMAIL_PORT = 587
+EMAIL_USE_TLS = True
+DEFAULT_FROM_EMAIL = "dominicstern19@gmail.com"
+SERVER_EMAIL = "dominicstern19@gmail.com"
+
+#Social Auth - Facebok
+SOCIAL_AUTH_FACEBOOK_KEY = '1050739334995465'
+SOCIAL_AUTH_FACEBOOK_SECRET = 'a7678da1c7b985f598c362372e5496c4'
+
+
+
+
+
+
+
+
