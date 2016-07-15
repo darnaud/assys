@@ -1,0 +1,29 @@
+{% load staticfiles %}
+
+<!DOCTYPE html>
+<html>
+<head lang="eng">
+	<meta charset="UTF-8">
+	<title> {% block title%} Welcome the Assys {% endblock %}</title>
+</head>
+<body background="{% static 'base/img/header_full.jpg'%}">
+	{% block content %}
+	{% if request.user.is_authenticated %}
+		<h4>
+			Hi! {% if request.user.first_name%}
+					{{ request.user.first_name}}
+				{% else %}
+					{{ request.user.username}}!!
+				{% endif %} <a href="{% url 'auth_logout' %}"> Log out</a>
+		</h4>
+	{% else %}
+		<h4>
+			Hello, visiting user! Would you like to <a href="{% url 'auth_login'%}"> log in</a>?
+		</h4>
+	{% endif %}
+	<h2> Assy Welcomes you!! There are {{ count }} types of beauty items in stock. User location: {{ request.session.location }}</h2>
+		
+	{% endblock %}
+
+</body>
+</html>
