@@ -6,11 +6,15 @@
 
 {% load bootstrap_themes %}
 
+{% load compress %}
+
 {% bootstrap_styles theme='simplex' type='min.css' %}
 
 {% block bootstrap3_extra_head %}
 	<link href="http://fonts.googleapis.com/css?family=Open+Sans:400,300,700" rel="stylesheet" type="text/css">
+	{% compress css %}
 	<link href="{% static 'base/css/style.css' %}" rel="stylesheet" type="text/css">
+	{% endcompress %}
 {% endblock %}
 
 {% block bootstrap3_title %}
@@ -33,9 +37,9 @@
 			</div>	
 			<div id="navbar" class="collapse navbar-collapse">
 				<ul class="nav navbar-nav">
-					<li class="hvr-curl-top-right"><a href="{% url 'index' %}">Home</li>
-					<li class="hvr-curl-top-right"><a href="#about">About</li>
-					<li class="hvr-curl-top-right"><a href="#contact">Contact</li>
+					<li class="hvr-curl-top-right"><a href="{% url 'index' %}">Home</a></li>
+					<li class="hvr-curl-top-right"><a href="#about">About</a></li>
+					<li class="hvr-curl-top-right"><a href="#contact">Contact</a></li>
 				</ul>
 				<div class="navbar-form pull-right">
 					{% if request.user.is_authenticated %}
@@ -53,7 +57,7 @@
 		</div>
 	</nav>
 	<div class="container-fluid">
-		<img src="{% static 'base/img/header_full.jpg' %}" class="bg"/>
+		<img src="{% static 'base/img/05.jpg' %}" class="bg"/>
 		<div class="parallax">
 			<div class="row">
 				{% block body %}
